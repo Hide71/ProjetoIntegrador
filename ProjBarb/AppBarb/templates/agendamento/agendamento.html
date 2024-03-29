@@ -1,0 +1,33 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<h1> <center>Agendamento</center></h1>
+       <hr>
+       <a class="btn btn-success" href="{% url 'agendamento_add' %}">ADICIONAR</a>
+       <a class="btn btn-success" href="{% url 'home' %}">MENU INICIAL</a>
+       <table class="table table-striped">
+          <thead>
+             <tr>
+                <th>cliente</th>
+                <th>data_hora</th>
+                <th>observações</th>
+                <th>ações</th>
+            </tr>
+          </thead> 
+          <tbody>
+            {% for agendamento in agendamentos %}
+            <tr>
+                <td>{{agendamento.cliente}}</td>
+                <td>{{agendamento.data_hora}}</td>
+                <td>{{agendamento.observações}}</td>
+                <td>
+                    <a class="btn btn-warning" href="{% url 'agendamento_edit' agendamento.id %}">EDITAR</a>
+                    <a class="btn btn-danger" href="{% url 'agendamento_delete' agendamento.id %}">DELETAR</a>
+                </td>
+            </tr>
+            {% endfor %}
+          </tbody> 
+        </table> 
+    </div> 
+</div>        
+{%endblock%}

@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<h1> <center>Planos</center></h1>
+       <hr>
+       <a class="btn btn-success" href="{% url 'plano_add' %}">ADICIONAR</a>
+       <a class="btn btn-success" href="{% url 'home' %}">MENU INICIAL</a>
+       <table class="table table-striped">
+          <thead>
+             <tr>
+               <th>id</th>
+                <th>plano</th>
+                <th>barba</th>
+                <th>corte</th>
+                <th>valor</th>
+                <th>ações</th>
+            </tr>
+          </thead> 
+          <tbody>
+            {% for plano in planos %}
+            <tr>
+                <td>{{plano.id}}</td>
+                <td>{{plano.plano}}</td>
+                <td>{{plano.barba}}</td>
+                <td>{{plano.corte}}</td>
+                <td>{{plano.valor}}</td>
+                <td>
+                    <a class="btn btn-warning" href="{% url 'plano_edit' plano.id %}">EDITAR</a>
+                    <a class="btn btn-danger" href="{% url 'plano_delete' plano.id %}">DELETAR</a>
+                </td>
+            </tr>
+            {% endfor %}
+          </tbody> 
+        </table> 
+    </div> 
+</div>        
+{%endblock%}
