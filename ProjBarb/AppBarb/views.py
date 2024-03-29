@@ -69,6 +69,7 @@ def plano_add(request):
 def plano_edit(request, plano_id):
     plano = Plano.objects.get(id=plano_id)
     form = PlanoForm(request.POST or None, instance=plano)
+    
     if request.POST:
         if form.is_valid():
            form.save()
