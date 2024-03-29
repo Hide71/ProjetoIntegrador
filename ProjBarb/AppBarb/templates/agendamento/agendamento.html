@@ -9,6 +9,7 @@
           <thead>
              <tr>
                 <th>cliente</th>
+                <th>plano</th>
                 <th>data_hora</th>
                 <th>observações</th>
                 <th>ações</th>
@@ -18,6 +19,7 @@
             {% for agendamento in agendamentos %}
             <tr>
                 <td>{{agendamento.cliente}}</td>
+                <td>{{agendamento.cliente.idPlano}}</td>
                 <td>{{agendamento.data_hora}}</td>
                 <td>{{agendamento.observações}}</td>
                 <td>

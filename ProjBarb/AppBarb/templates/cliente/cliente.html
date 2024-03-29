@@ -14,7 +14,6 @@
                 <th>endereço</th>
                 <th>telefone</th>
                 <th>cpf</th>
-                <th>plano</th>
                 <th>ações</th>
             </tr>
           </thead> 
@@ -26,7 +25,6 @@
                 <td>{{cliente.endereço}}</td>
                 <td>{{cliente.telefone}}</td>
                 <td>{{cliente.cpf}}</td>
-                <td>{{cliente.idPlano.plano}}</td>
                 <td>
                     <a class="btn btn-warning" href="{% url 'cliente_edit' cliente.id %}">EDITAR</a>
                     <a class="btn btn-danger" href="{% url 'cliente_delete' cliente.id %}">EXCLUIR</a>

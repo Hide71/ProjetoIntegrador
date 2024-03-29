@@ -54,4 +54,4 @@ class Agendamento(models.Model):
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
-        fields = ('cliente', 'data_hora','observações')
+        fields = ('cliente','data_hora','observações')
