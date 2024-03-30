@@ -10,8 +10,10 @@
              <tr>
                 <th>cliente</th>
                 <th>plano</th>
-                <th>data_hora</th>
-                <th>observações</th>
+                <th>data e hora</th>
+                <th>metodo Pag</th>
+                <th>status pag</th>
+                <th>observação</th>
                 <th>ações</th>
             </tr>
           </thead> 
@@ -21,7 +23,9 @@
                 <td>{{agendamento.cliente}}</td>
                 <td>{{agendamento.cliente.idPlano}}</td>
                 <td>{{agendamento.data_hora}}</td>
-                <td>{{agendamento.observações}}</td>
+                <td>{{agendamento.metodoPgto}}</td>
+                <td>{{agendamento.statusPgto}}</td>
+                <td>{{agendamento.observacao}}</td>
                 <td>
                     <a class="btn btn-warning" href="{% url 'agendamento_edit' agendamento.id %}">EDITAR</a>
                     <a class="btn btn-danger" href="{% url 'agendamento_delete' agendamento.id %}">DELETAR</a>

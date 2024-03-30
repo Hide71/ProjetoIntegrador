@@ -1,8 +1,6 @@
 from django.db import models
 from django.utils import timezone
 
-# Create your models here.
-from django.db import models
 from django import forms
 
 # Create your models here.
@@ -42,9 +40,21 @@ class ClienteForm(forms.ModelForm):
 
 
 class Agendamento(models.Model):
+    METODO_PG_CHOICES = (
+        ('pix', 'pix'), 
+        ('cartao', 'cartao'), 
+        ('dinheiro', 'dinheiro'),
+        ('fiado', 'fiado')
+    )
+    STATUS_PG_CHOICES = (
+        ('pg', 'Pago'),
+        ('faltapg', 'Falta Pagamento'),
+    )
     cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    data_hora = models.DateTimeField(default=timezone.now)
-    observações = models.CharField(max_length=300, null=True )
+    data_hora = models.DateTimeField(default=0)
+    metodoPgto = models.CharField(max_length=100, null=True , choices= METODO_PG_CHOICES)
+    statusPgto = models.CharField(max_length=10, null=True, choices= STATUS_PG_CHOICES)
+    observacao = models.CharField(max_length=300, null=True )
 
     def __str__(self):
         return self.cliente.nome
@@ -54,4 +64,4 @@ class Agendamento(models.Model):
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
-        fields = ('cliente','data_hora','observações')
+        fields = ('cliente','data_hora', 'metodoPgto','statusPgto','observacao')
