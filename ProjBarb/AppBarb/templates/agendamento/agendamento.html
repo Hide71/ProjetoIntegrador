@@ -1,7 +1,7 @@
 {%extends 'base.html'%}
 
 {%block content%}
-<h1> <center>Agendamento</center></h1>
+<h1> <center>CONTRATO</center></h1>
        <hr>
        <a class="btn btn-success" href="{% url 'agendamento_add' %}">ADICIONAR</a>
        <a class="btn btn-success" href="{% url 'home' %}">MENU INICIAL</a>
@@ -10,7 +10,8 @@
              <tr>
                 <th>cliente</th>
                 <th>plano</th>
-                <th>data e hora</th>
+                <th>barba</th>
+                <th>cortes</th>
                 <th>metodo Pag</th>
                 <th>status pag</th>
                 <th>observação</th>
@@ -20,9 +21,10 @@
           <tbody>
             {% for agendamento in agendamentos %}
             <tr>
-                <td>{{agendamento.cliente}}</td>
-                <td>{{agendamento.cliente.idPlano}}</td>
-                <td>{{agendamento.data_hora}}</td>
+                <td>{{agendamento.id_cliente}}</td>
+                <td>{{agendamento.id_plano}}</td>
+                <td>{{agendamento.id_plano.barba}}</td>
+                <td>{{agendamento.id_plano.corte}}</td>
                 <td>{{agendamento.metodoPgto}}</td>
                 <td>{{agendamento.statusPgto}}</td>
                 <td>{{agendamento.observacao}}</td>

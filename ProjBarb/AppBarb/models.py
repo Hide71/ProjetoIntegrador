@@ -24,7 +24,6 @@ class Cliente(models.Model):
     endereço = models.CharField(max_length=200)
     telefone = models.CharField(max_length=10)
     cpf = models.CharField(max_length=11)
-    idPlano = models.ForeignKey(Plano, on_delete=models.CASCADE, related_name='cliente')
 
     def __str__(self):
         return self.nome
@@ -34,7 +33,7 @@ class Cliente(models.Model):
 class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
-        fields = ('nome','endereço', 'telefone', 'cpf', 'idPlano')
+        fields = ('nome','endereço', 'telefone', 'cpf')
        
 
 
@@ -50,18 +49,18 @@ class Agendamento(models.Model):
         ('pg', 'Pago'),
         ('faltapg', 'Falta Pagamento'),
     )
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE)
-    data_hora = models.DateTimeField(default=0)
+    id_cliente = models.ForeignKey(Cliente,null=True, on_delete=models.CASCADE,)
+    id_plano = models.ForeignKey(Plano,null=True, on_delete=models.CASCADE)
     metodoPgto = models.CharField(max_length=100, null=True , choices= METODO_PG_CHOICES)
     statusPgto = models.CharField(max_length=10, null=True, choices= STATUS_PG_CHOICES)
     observacao = models.CharField(max_length=300, null=True )
 
     def __str__(self):
-        return self.cliente.nome
+        return self.cliente
 
 
 
 class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
-        fields = ('cliente','data_hora', 'metodoPgto','statusPgto','observacao')
+        fields = ('id_cliente', 'id_plano','metodoPgto','statusPgto','observacao')
