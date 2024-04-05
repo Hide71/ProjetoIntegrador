@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from AppBarb.models import Cliente,ClienteForm, Plano,PlanoForm, Agendamento, AgendamentoForm
+from AppBarb.models import Cliente,ClienteForm, Plano,PlanoForm, Agendamento, AgendamentoForm, Agenda, AgendaForm
 
 # Create your views here.
 def home(request):
@@ -128,3 +128,26 @@ def agendamento_delete(request, agendamento_id):
     agendamento = Agendamento.objects.get(id= agendamento_id)
     agendamento.delete()
     return redirect('agendamento')
+
+
+
+def agenda(request):
+    agendas = Agenda.objects.all()
+    context = {
+        'agendas': agendas
+    }
+    return render(request, 'agenda/agenda.html', context)
+
+
+def agenda_add(request):
+    form = AgendaForm(request.POST or None)
+    if request.POST:
+         if form.is_valid():
+             form.save()
+             return redirect('agenda')
+         
+    context = {
+        'form':form
+    }
+    return render(request, 'agenda/agenda_add.html', context)
+

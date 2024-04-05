@@ -17,7 +17,11 @@ class Plano(models.Model):
 class PlanoForm(forms.ModelForm):
     class Meta:
         model = Plano
-        fields = ('plano','barba', 'corte', 'valor')   
+        fields = ('plano','barba', 'corte', 'valor')  
+
+
+        
+                
 
 class Cliente(models.Model):
     nome = models.CharField(max_length=200)
@@ -49,7 +53,7 @@ class Agendamento(models.Model):
         ('pg', 'Pago'),
         ('faltapg', 'Falta Pagamento'),
     )
-    id_cliente = models.ForeignKey(Cliente,null=True, on_delete=models.CASCADE,)
+    id_cliente = models.ForeignKey(Cliente,null=True, on_delete=models.CASCADE)
     id_plano = models.ForeignKey(Plano,null=True, on_delete=models.CASCADE)
     metodoPgto = models.CharField(max_length=100, null=True , choices= METODO_PG_CHOICES)
     statusPgto = models.CharField(max_length=10, null=True, choices= STATUS_PG_CHOICES)
@@ -64,3 +68,19 @@ class AgendamentoForm(forms.ModelForm):
     class Meta:
         model = Agendamento
         fields = ('id_cliente', 'id_plano','metodoPgto','statusPgto','observacao')
+
+
+class Agenda(models.Model):
+    cliente = models.ForeignKey(Cliente,null=True, on_delete=models.CASCADE)
+    plano = models.ForeignKey(Plano,null=True, on_delete=models.CASCADE)
+    servico = models.DateTimeField(default=True, blank=True) 
+
+    def __str__(self):
+        return self.servico
+
+
+
+class AgendaForm(forms.ModelForm):
+    class Meta:
+        model = Agenda
+        fields = ('cliente', 'plano', 'servico',)
