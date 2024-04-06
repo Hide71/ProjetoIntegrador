@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils import timezone
-
 from django import forms
 
 # Create your models here.
@@ -8,7 +7,7 @@ class Plano(models.Model):
     plano = models.CharField(max_length=100)
     barba = models.IntegerField()
     corte = models.IntegerField()
-    valor= models.DecimalField(max_digits=5, decimal_places=2) 
+    valor = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
         return self.plano
@@ -42,7 +41,7 @@ class ClienteForm(forms.ModelForm):
 
 
 
-class Agendamento(models.Model):
+class Contrato(models.Model):
     METODO_PG_CHOICES = (
         ('pix', 'pix'), 
         ('cartao', 'cartao'), 
@@ -64,9 +63,9 @@ class Agendamento(models.Model):
 
 
 
-class AgendamentoForm(forms.ModelForm):
+class ContratoForm(forms.ModelForm):
     class Meta:
-        model = Agendamento
+        model = Contrato
         fields = ('id_cliente', 'id_plano','metodoPgto','statusPgto','observacao')
 
 

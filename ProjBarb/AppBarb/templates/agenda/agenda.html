@@ -9,7 +9,6 @@
        <table class="table table-striped">
           <thead>
             <tr>
-                <th>id</th>
                 <th>cliente</th>
                 <th>plano</th>
                 <th>serviço</th>
@@ -22,28 +21,13 @@
           <tbody>
             {% for agenda in agendas %}
             <tr>
-                <td>{{agenda.id}}</td>
                 <td>{{agenda.cliente.nome}}</td>
                 <td>{{agenda.plano.plano}}</td>
-                {% if agenda.plano.plano == 'Barba' %}
-                    {% if corte == 0 %}
-                        {% if agenda.plano.barba > 0 %}
-                            {% with agenda.plano.barba|add:"-1" as novo_valor %}
-                                {% if novo_valor == 0 %}
-                                    <td>Você não tem esse serviço</td>
-                                {% else %}
-                                    <td>Restam {{ novo_valor }} sessões de barba</td>
-                                {% endif %}
-                            {% endwith %}
-                        {% endif %}
-                    {% endif %}
-                {% endif %}
-
                 <td>{{agenda.servico}}</td>
                 <td>{{agenda.plano.barba}}</td>
                 <td>{{agenda.plano.corte}}</td>
                 <td>
-                    <a class="btn btn-warning">EDITAR</a>
+                    <a class="btn btn-warning" href="{% url 'agenda_edit' agenda.id %}">EDITAR</a>
                     <a class="btn btn-danger">EXCLUIR</a>
                 </td>
             </tr>

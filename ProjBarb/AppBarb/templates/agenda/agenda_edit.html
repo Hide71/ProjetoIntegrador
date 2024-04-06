@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card">
+    <div class="card-body">
+
+        <h1>EDITAR AGENDA</h1>
+        <form action="{% url 'agenda_edit' agenda.id %}" method="post">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button class="btn btn-success" type="submit">AGENDAR</button>
+            <a href="{% url 'home' %}" class="btn btn-success">MENU INICIAL</a>
+            <a href="{% url 'agenda' %}" class="btn btn-danger">CANCELAR</a>
+
+
+        </form>
+    </div>
+</div>
+
+{% endblock %}

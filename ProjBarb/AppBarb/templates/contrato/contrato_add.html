@@ -4,14 +4,14 @@
 
 <div class="card">
     <div class="card-body">
-        <h1>Agendamento</h1>
+        <h1>Contrato</h1>
         <hr>
-        <form action="{% url 'agendamento_add' %} " method="post">
+        <form action="{% url 'contrato_add' %} " method="post">
             {% csrf_token %}
             {{form.as_p}}
             <button class="btn btn-success" type="submit">ENVIAR</button>
             <a href="{% url 'home' %}" class="btn btn-success">MENU INICIAL</a>
-            <a href="{% url 'agendamento' %}" class="btn btn-danger">CANCELAR</a>
+            <a href="{% url 'contrato' %}" class="btn btn-danger">CANCELAR</a>
 
         </form>    
     </div>

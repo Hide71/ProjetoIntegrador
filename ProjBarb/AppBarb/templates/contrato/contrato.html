@@ -3,7 +3,7 @@
 {%block content%}
 <h1> <center>CONTRATO</center></h1>
        <hr>
-       <a class="btn btn-success" href="{% url 'agendamento_add' %}">ADICIONAR</a>
+       <a class="btn btn-success" href="{% url 'contrato_add' %}">ADICIONAR</a>
        <a class="btn btn-success" href="{% url 'home' %}">MENU INICIAL</a>
        <table class="table table-striped">
           <thead>
@@ -19,18 +19,18 @@
             </tr>
           </thead> 
           <tbody>
-            {% for agendamento in agendamentos %}
+            {% for contrato in contratos %}
             <tr>
-                <td>{{agendamento.id_cliente}}</td>
-                <td>{{agendamento.id_plano}}</td>
-                <td>{{agendamento.id_plano.barba}}</td>
-                <td>{{agendamento.id_plano.corte}}</td>
-                <td>{{agendamento.metodoPgto}}</td>
-                <td>{{agendamento.statusPgto}}</td>
-                <td>{{agendamento.observacao}}</td>
+                <td>{{contrato.id_cliente}}</td>
+                <td>{{contrato.id_plano}}</td>
+                <td>{{contrato.id_plano.barba}}</td>
+                <td>{{contrato.id_plano.corte}}</td>
+                <td>{{contrato.metodoPgto}}</td>
+                <td>{{contrato.statusPgto}}</td>
+                <td>{{contrato.observacao}}</td>
                 <td>
-                    <a class="btn btn-warning" href="{% url 'agendamento_edit' agendamento.id %}">EDITAR</a>
-                    <a class="btn btn-danger" href="{% url 'agendamento_delete' agendamento.id %}">DELETAR</a>
+                    <a class="btn btn-warning" href="{% url 'contrato_edit' contrato.id %}">EDITAR</a>
+                    <a class="btn btn-danger" href="{% url 'contrato_delete' contrato.id %}">DELETAR</a>
                 </td>
             </tr>
             {% endfor %}

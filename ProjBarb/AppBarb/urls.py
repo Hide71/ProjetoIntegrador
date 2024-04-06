@@ -21,17 +21,19 @@ urlpatterns = [
 
     path('plano_delete/<int:plano_id>', views.plano_delete, name='plano_delete'),
 
-    path('agendamento/', views.agendamento, name='agendamento'),
+    path('contrato/', views.contrato, name='contrato'),
 
-    path('agendamento_add/', views.agendamento_add, name='agendamento_add'),
+    path('contrato_add/', views.contrato_add, name='contrato_add'),
 
-    path('agendamento_edit/<int:agendamento_id>', views.agendamento_edit, name='agendamento_edit'),
+    path('contrato_edit/<int:contrato_id>', views.contrato_edit, name='contrato_edit'),
 
-    path('agendamento_delete/<int:agendamento_id>', views.agendamento_delete, name='agendamento_delete'),
+    path('contrato_delete/<int:contrato_id>', views.contrato_delete, name='contrato_delete'),
 
     path('agenda/', views.agenda, name='agenda'),
 
     path('agenda_add/', views.agenda_add, name='agenda_add'),
+
+    path('agenda_edit/<int:agenda_id>', views.agenda_edit, name='agenda_edit'),
 
 
 ]

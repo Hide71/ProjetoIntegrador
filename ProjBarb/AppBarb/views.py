@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from AppBarb.models import Cliente,ClienteForm, Plano,PlanoForm, Agendamento, AgendamentoForm, Agenda, AgendaForm
+from AppBarb.models import Cliente,ClienteForm, Plano,PlanoForm, Contrato, ContratoForm, Agenda, AgendaForm
 
 # Create your views here.
 def home(request):
@@ -89,45 +89,45 @@ def plano_delete(request, plano_id):
 
    
 
-def agendamento(request):
-    agendamentos = Agendamento.objects.all()
+def contrato(request):
+    contratos = Contrato.objects.all()
     context = {
-        'agendamentos': agendamentos
+        'contratos': contratos
     }
-    return render(request, 'agendamento/agendamento.html', context)
+    return render(request, 'contrato/contrato.html', context)
 
 
-def agendamento_add(request):
-    form = AgendamentoForm(request.POST or None)
+def contrato_add(request):
+    form = ContratoForm(request.POST or None)
     if request.POST:
         if form.is_valid():
             form.save()
-            return redirect('agendamento')
+            return redirect('contrato')
     context = {
         'form': form
          }
-    return render(request, 'agendamento/agendamento_add.html', context)
+    return render(request, 'contrato/contrato_add.html', context)
 
 
-def agendamento_edit(request, agendamento_id):
-    agendamento = Agendamento.objects.get(id= agendamento_id)
-    form = AgendamentoForm(request.POST or None, instance= agendamento)
+def contrato_edit(request, contrato_id):
+    contrato = Contrato.objects.get(id= contrato_id)
+    form = ContratoForm(request.POST or None, instance= contrato)
     if request.POST:
         if form.is_valid():
             form.save()
-            return redirect('agendamento')
+            return redirect('contrato')
     context = {
         'form': form,
-        'agendamento':agendamento
+        'contrato': contrato
 
     }  
-    return render(request, 'agendamento/agendamento_edit.html', context)  
+    return render(request, 'contrato/contrato_edit.html', context)  
 
 
-def agendamento_delete(request, agendamento_id):
-    agendamento = Agendamento.objects.get(id= agendamento_id)
-    agendamento.delete()
-    return redirect('agendamento')
+def contrato_delete(request, contrato_id):
+    agendamento = Contrato.objects.get(id= contrato_id)
+    contrato.delete()
+    return redirect('contrato')
 
 
 
@@ -142,12 +142,27 @@ def agenda(request):
 def agenda_add(request):
     form = AgendaForm(request.POST or None)
     if request.POST:
-         if form.is_valid():
-             form.save()
-             return redirect('agenda')
+         if form.is_valid(): 
+            form.save()
+            return redirect('agenda')
+              
          
     context = {
         'form':form
     }
     return render(request, 'agenda/agenda_add.html', context)
+
+
+def agenda_edit(request, agenda_id):
+    agenda = Agenda.objects.get(id= agenda_id)
+    form = AgendaForm(request.POST or None, instance= agenda)
+    if request.POST:
+        if form.is_valid():
+            form.save()
+            return redirect('agenda')
+    context ={
+        'form': form,
+        'agenda': agenda
+    }    
+    return render(request, 'agenda/agenda_edit.html', context )
 
