@@ -35,5 +35,7 @@ urlpatterns = [
 
     path('agenda_edit/<int:agenda_id>', views.agenda_edit, name='agenda_edit'),
 
+    path('agenda_delete/<int:agenda_id>',views.agenda_delete, name='agenda_delete'),
+
 
 ]

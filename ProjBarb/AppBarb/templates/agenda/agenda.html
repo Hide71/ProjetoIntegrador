@@ -28,7 +28,7 @@
                 <td>{{agenda.plano.corte}}</td>
                 <td>
                     <a class="btn btn-warning" href="{% url 'agenda_edit' agenda.id %}">EDITAR</a>
-                    <a class="btn btn-danger">EXCLUIR</a>
+                    <a class="btn btn-danger" href="{% url 'agenda_delete' agenda.id %}">EXCLUIR</a>
                 </td>
             </tr>
             {% endfor %}

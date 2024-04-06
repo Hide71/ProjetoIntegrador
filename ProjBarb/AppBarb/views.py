@@ -19,12 +19,9 @@ def cliente_add(request):
     if request.POST:
         if form.is_valid():
             form.save()
-            return redirect('cliente')
-    context ={
-        'form': form
-    }        
+            return redirect('cliente')     
 
-    return render(request, 'cliente/cliente_add.html', context)
+    return render(request, 'cliente/cliente_add.html', {'form': form })
 
 def cliente_edit(request, cliente_id):
     cliente = Cliente.objects.get(id=cliente_id)
@@ -125,7 +122,7 @@ def contrato_edit(request, contrato_id):
 
 
 def contrato_delete(request, contrato_id):
-    agendamento = Contrato.objects.get(id= contrato_id)
+    contrato = Contrato.objects.get(id= contrato_id)
     contrato.delete()
     return redirect('contrato')
 
@@ -165,4 +162,10 @@ def agenda_edit(request, agenda_id):
         'agenda': agenda
     }    
     return render(request, 'agenda/agenda_edit.html', context )
+
+
+def agenda_delete(request, agenda_id):
+    agenda = Agenda.objects.get(id= agenda_id)
+    agenda.delete()
+    return redirect('agenda')
 

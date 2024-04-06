@@ -26,7 +26,7 @@ class Cliente(models.Model):
     nome = models.CharField(max_length=200)
     endereço = models.CharField(max_length=200)
     telefone = models.CharField(max_length=10)
-    cpf = models.CharField(max_length=11)
+    cpf = models.CharField(max_length=11, unique=True)
 
     def __str__(self):
         return self.nome
@@ -37,9 +37,8 @@ class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ('nome','endereço', 'telefone', 'cpf')
-       
 
-
+   
 
 class Contrato(models.Model):
     METODO_PG_CHOICES = (
