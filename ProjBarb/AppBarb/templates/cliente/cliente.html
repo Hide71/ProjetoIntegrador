@@ -4,12 +4,11 @@
 {% block content %}
        <h1> <center>Cadastro de Clientes</center></h1>
        <hr>
-       <a class="btn btn-success" href="{% url 'cliente_add' %}">ADICIONAR</a>
+       <a class="btn btn-primary" href="{% url 'cliente_add' %}">ADICIONAR</a>
        <a class="btn btn-success" href="{% url 'home' %}">MENU INICIAL</a>
        <table class="table table-striped">
           <thead>
             <tr>
-              <th>id</th>
                 <th>nome</th>
                 <th>endereço</th>
                 <th>telefone</th>
@@ -20,7 +19,6 @@
           <tbody>
             {% for cliente in clientes %}
             <tr>
-                <td>{{cliente.id}}</td>
                 <td>{{cliente.nome}}</td>
                 <td>{{cliente.endereço}}</td>
                 <td>{{cliente.telefone}}</td>

@@ -1,3 +1,4 @@
+from logging import PlaceHolder
 from django.db import models
 from django.utils import timezone
 from django import forms
@@ -17,6 +18,7 @@ class PlanoForm(forms.ModelForm):
     class Meta:
         model = Plano
         fields = ('plano','barba', 'corte', 'valor')  
+ 
 
 
         
@@ -37,6 +39,17 @@ class ClienteForm(forms.ModelForm):
     class Meta:
         model = Cliente
         fields = ('nome','endereço', 'telefone', 'cpf')
+
+        widgets = {
+          'nome':forms.TextInput(attrs= {'class': 'form-control-sm' ,'placeholder':"nome completo", 'autofocus': ''}),
+          'endereco':forms.TextInput(attrs={'class': 'form-control-sm'}),
+          'telefone':forms.TextInput(attrs={'class': 'form-control-sm', 'placeholder': "DDD( )____-____"}),
+          'cpf':forms.TextInput(attrs={'class': 'form-control-sm', 'placeholder': " ___.___.___-__"}),
+          
+          
+
+
+        }
 
    
 
@@ -71,7 +84,7 @@ class ContratoForm(forms.ModelForm):
 class Agenda(models.Model):
     cliente = models.ForeignKey(Cliente,null=True, on_delete=models.CASCADE)
     plano = models.ForeignKey(Plano,null=True, on_delete=models.CASCADE)
-    servico = models.DateTimeField(default=True, blank=True) 
+    servico = models.DateTimeField(default="  ", blank=True) 
 
     def __str__(self):
         return self.servico
@@ -82,3 +95,8 @@ class AgendaForm(forms.ModelForm):
     class Meta:
         model = Agenda
         fields = ('cliente', 'plano', 'servico',)
+
+
+       
+
+

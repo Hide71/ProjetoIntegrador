@@ -38,4 +38,5 @@ urlpatterns = [
     path('agenda_delete/<int:agenda_id>',views.agenda_delete, name='agenda_delete'),
 
 
+
 ]
